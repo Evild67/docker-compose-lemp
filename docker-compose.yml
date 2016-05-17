@@ -1,0 +1,35 @@
+version: '2'
+services:
+  nginx:
+    image: evild/alpine-nginx:latest
+    restart: always
+    links:
+      - php
+    volumes:
+      - ./html:/var/www/html/:ro
+      - ./nginx/conf/nginx.conf:/etc/nginx/conf/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    ports:
+      - 80:80
+      - 443:443
+  php:
+    image: evild/alpine-php:latest
+    restart: always
+    volumes:
+      - ./html:/var/www/html
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      - WORDPRESS_DB_NAME=lemp_bdd
+      - WORDPRESS_TABLE_PREFIX=lemp_
+      - WORDPRESS_DB_HOST=lemp
+      - WORDPRESS_DB_PASSWORD=password
+  db:
+    image: mariadb:latest
+    restart: always
+    volumes:
+      - ./var/lib/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
