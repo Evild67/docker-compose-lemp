@@ -2,6 +2,7 @@ version: '2'
 services:
   nginx:
     image: evild/alpine-nginx:latest
+    container_name: lemp_nginx
     restart: always
     links:
       - php
@@ -14,6 +15,7 @@ services:
       - 443:443
   php:
     image: evild/alpine-php:latest
+    container_name: lemp_php
     restart: always
     volumes:
       - ./html:/var/www/html
@@ -28,6 +30,7 @@ services:
       - WORDPRESS_DB_PASSWORD=password
   db:
     image: mariadb:latest
+    container_name: lemp_mariadb
     restart: always
     volumes:
       - ./var/lib/mysql:/var/lib/mysql
