@@ -33,6 +33,9 @@ services:
     container_name: lemp_mariadb
     restart: always
     volumes:
-      - ./var/lib/mysql:/var/lib/mysql
+      - wordpress-db-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=password
+volumes:
+  wordpress-db-data:
+    driver: local
