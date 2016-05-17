@@ -1,7 +1,7 @@
 version: '2'
 services:
   nginx:
-    image: evild/alpine-nginx:latest
+    image: evild/alpine-nginx:1.9.15
     container_name: lemp_nginx
     restart: always
     links:
@@ -14,7 +14,7 @@ services:
       - 80:80
       - 443:443
   php:
-    image: evild/alpine-php:latest
+    image: evild/alpine-php:7.0.6
     container_name: lemp_php
     restart: always
     volumes:
