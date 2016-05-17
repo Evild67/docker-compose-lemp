@@ -1,7 +1,7 @@
 version: '2'
 services:
   nginx:
-    image: evild/alpine-nginx:1.9.15
+    image: evild/alpine-nginx:1.9.15-openssl
     container_name: lemp_nginx
     restart: always
     links:
