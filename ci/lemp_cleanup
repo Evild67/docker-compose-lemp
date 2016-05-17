@@ -2,4 +2,4 @@
 
 set -e
 
-docker rm -f $(docker ps -aq)
+docker-compose down
