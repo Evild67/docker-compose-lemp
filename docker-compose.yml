@@ -24,18 +24,18 @@ services:
     links:
       - db
     environment:
-      - WORDPRESS_DB_NAME=lemp_bdd
-      - WORDPRESS_TABLE_PREFIX=lemp_
-      - WORDPRESS_DB_HOST=lemp
-      - WORDPRESS_DB_PASSWORD=password
+      - DB_NAME=lemp_bdd
+      - TABLE_PREFIX=lemp_
+      - DB_HOST=lemp
+      - DB_PASSWORD=password
   db:
     image: mariadb:latest
     container_name: lemp_mariadb
     restart: always
     volumes:
-      - wordpress-db-data:/var/lib/mysql
+      - db-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=password
 volumes:
-  wordpress-db-data:
+  db-data:
     driver: local
