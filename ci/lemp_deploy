@@ -2,7 +2,5 @@
 
 set -e
 
-
-
-#  git checkout master
-# git push --mirror https://$GITHUB_TOKEN@github.com/Evild67/docker-compose-lemp.git
+git checkout master
+git push --mirror https://$GITHUB_TOKEN@github.com/Evild67/docker-compose-lemp.git
